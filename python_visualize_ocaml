@@ -1,0 +1,111 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+import os 
+# import glob
+# import numpy as np
+import matplotlib.pyplot as plt 
+# import array
+
+
+os.chdir("/home/cuilab/Documents")
+
+# cwd = os.getcwd()
+# txt_files = glob.glob(os.path.join(cwd, '*.txt'))
+# print(txt_files)
+
+
+## test the current directory and output a txt
+# cwd = os.getcwd()
+# text = 'Some text to output'
+# output_path = os.path.join(cwd, 'output.txt')
+# with open(output_path, 'w') as f:
+#     f.write(text) 
+
+
+
+# test read of txt in current dir
+# cwd = os.getcwd()
+# file_path = os.path.join(cwd, 'actual_hand_traj_r1_1.txt')
+
+# with open(file_path, 'r') as f:
+#     data = f.read()
+
+# print(data)  # 显示文件内容
+
+
+# # store txt in array 
+# array_type = 'f'
+# array_obj = array.array(array_type)  
+
+# with open('actual_hand_traj_r1_1.txt', 'r') as f:
+#     for line in f:
+#         # array_obj += list(map(float, line.split()))
+#         float_line = array.array('f', list(map(float, line.split())))     
+        
+#         # 然后使用 .extend() 添加到 array_obj 中
+#         array_obj.extend(float_line)   
+         
+# plt.plot(float_line)       
+
+
+# read txt column by column into list
+# filename = 'actual_hand_traj_r1_1.txt'
+# filename = 'target_hand_traj_r1_1.txt'
+# filename = 'target_torque_r1_1.txt'
+# filename = 'cost_vanilla_loop_r1_1.txt'
+filename = 'c.txt'
+
+# with open(filename, 'r') as f:
+#     first_line = f.readline()
+#     # first_line_data = first_line.split()
+#     cols = len(first_line.split())   #使用 .split() 并计算长度来获取列数
+    
+#     data = [] 
+#     # data.append(first_line_data)
+    
+#     for i in range(cols):  
+#         data.append([])
+        
+#     for line in f:  
+#         line_data = line.split()  
+            
+#         for i in range(cols): 
+#             data[i].append(line_data[i])  
+            
+#     for col in data:
+#         print(col) 
+
+# # turn str to float
+# float_lst_1 = []
+# for i in range(len(data)):
+#     float_lst_1.append([])
+    
+# for i in range(len(data)):
+#     # for j in range(len(lst[i])):
+        
+#     float_lst_1[i] = [float(s) for s in data[i]] 
+
+
+with open(filename) as f:
+    content = f.read()
+    lines = [x.split() for x in content.splitlines()]
+    matrix = [list(map(float, x)) for x in lines] 
+
+matrix = list(zip(*matrix))
+
+# plot lines 
+for i in range(len(matrix)):
+    plt.plot(matrix[i])
+
+
+# compare actual vs. target
+# ind = 3;
+# plt.plot(float_lst_1[ind])
+# plt.plot(float_lst[ind])
+
+
+
